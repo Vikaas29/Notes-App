@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export function FloatingUI(props){
 
-    const {setSearchFilter,setShowFavs,showFavs}=props.data
+    const {setSearchFilter,setShowFavs,showFavs,setSort,sort}=props.data
     const navigate=useNavigate();
     const userName=localStorage.getItem("userName");
     const [logout,setLogout]=useState("hidden");
@@ -20,6 +20,7 @@ export function FloatingUI(props){
            placeholder="Search" 
            onChange={(e)=>{setSearchFilter(e.target.value)}} />
           <img onClick={()=>{setShowFavs(!showFavs)}} src={showFavs?"Fav.png":"notFav.png"} className="bg-black rounded-[50%] w-[50px] h-[50px] cursor-pointer shadow-2xl shadow-black duration-300 hover:translate-y-[-3px]" title="Favourites" alt="" /> 
+          <div className="text-2xl cursor-pointer  w-[150px] hover:text-green-500" onClick={()=>{setSort(!sort)}}>{sort?"sort ↓":"sort ↑"}</div>
           </div>
 
         

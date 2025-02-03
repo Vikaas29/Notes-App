@@ -20,6 +20,7 @@ export function HomePage(){
     const[editData,setEditData]=useState({});
     const [searchFilter,setSearchFilter]=useState("");
     const [showFavs,setShowFavs]=useState(false);
+    const [sort,setSort]=useState(false);
 
     const notify = (message) => toast(message);
 
@@ -33,7 +34,7 @@ export function HomePage(){
         fetchNotes();
 
         
-    }, [showNote,showAddNote]);
+    }, [showNote,showAddNote,sort]);
     
     async function fetchNotes() {
             
@@ -46,13 +47,16 @@ export function HomePage(){
         });
 
         const result= await response.json();
-        setNotesdata([...result.data]);
+        let arrayData=[...result.data];
+        if(sort==true){arrayData.sort((a,b)=>a.data.date-b.data.date)}
+        else{arrayData.sort((a,b)=>b.data.date-a.data.date)}
+        setNotesdata([...arrayData]);
     }
 
 
     return(<>
         <ToastContainer />
-        <FloatingUI data={{setSearchFilter,setShowFavs,showFavs}} ></FloatingUI>
+        <FloatingUI data={{setSearchFilter,setShowFavs,showFavs,setSort,sort}} ></FloatingUI>
 
         <div className="p-10 flex flex-wrap gap-5">
            { showFavs ? notesData.filter(e=>e.data.fav==true).filter((e)=>e.data.title.includes(searchFilter)||e.data.content.includes(searchFilter)).map((e,index)=><NoteBox key={index} data={{e ,setShowNote,setCurrentNote}}></NoteBox>) :

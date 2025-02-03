@@ -72,7 +72,8 @@ export function AddNode(props){
                 title:title==""? `${new Date()}`:title,
                 content:contentArea,
                 images:images,
-                fav:fav
+                fav:fav,
+                date:Date.now()
             }
 
     
@@ -118,7 +119,8 @@ export function AddNode(props){
                 title:title==""? `${new Date()}`:title,
                 content:contentArea,
                 images:images,
-                fav:fav
+                fav:fav,
+                date:Date.now()
             }
 
             const id= editData._id;
