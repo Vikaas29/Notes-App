@@ -32,7 +32,7 @@ export function VoiceMemo(props){
             placeholder="Enter the Details"
             className="w-[100%] h-[300px] p-2 text-xl border-2 border-black rounded-xl " 
             id="contentArea"
-            // disabled={isListening}
+            disabled={isListening}
             value={isListening ? textArea +" " + transcript:textArea }
             onChange={(e)=>{setTextArea(e.target.value)}}
             >
