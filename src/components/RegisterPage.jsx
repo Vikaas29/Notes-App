@@ -25,7 +25,7 @@ export function RegisterPage(){
             return;
         }
 
-        const saveUser=await fetch("https://notes-app-back-end-lime.vercel.app/register",{
+        const saveUser=await fetch("https://notes-app-sand-six.vercel.app/register",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

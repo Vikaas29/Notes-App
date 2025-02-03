@@ -14,7 +14,7 @@ export function CurrentNote(props){
 
         try{
 
-            const response= await fetch("https://notes-app-back-end-lime.vercel.app/deletenote",{
+            const response= await fetch("https://notes-app-sand-six.vercel.app/deletenote",{
                 method:"DELETE",
                 headers:{
                     "Content-Type":"application/json",

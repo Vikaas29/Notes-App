@@ -25,7 +25,7 @@ export function Login(){
             return;
         }
 
-        const saveUser=await fetch("https://notes-app-back-end-lime.vercel.app/login",{
+        const saveUser=await fetch("https://notes-app-sand-six.vercel.app/login",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

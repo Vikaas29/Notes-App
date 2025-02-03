@@ -76,7 +76,7 @@ export function AddNode(props){
             }
 
     
-            const response = await fetch("https://notes-app-back-end-lime.vercel.app/addnote",{
+            const response = await fetch("https://notes-app-sand-six.vercel.app/addnote",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
@@ -124,7 +124,7 @@ export function AddNode(props){
             const id= editData._id;
             
     
-            const response = await fetch("https://notes-app-back-end-lime.vercel.app/editnote",{
+            const response = await fetch("https://notes-app-sand-six.vercel.app/editnote",{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",

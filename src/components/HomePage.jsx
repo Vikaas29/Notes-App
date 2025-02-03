@@ -37,7 +37,7 @@ export function HomePage(){
     
     async function fetchNotes() {
             
-        const response=await fetch(`https://notes-app-back-end-lime.vercel.app/getnotes/${email}`,{
+        const response=await fetch(`https://notes-app-sand-six.vercel.app/getnotes/${email}`,{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
