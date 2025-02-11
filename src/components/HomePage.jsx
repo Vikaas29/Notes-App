@@ -5,6 +5,7 @@ import { NoteBox } from "./NoteBox";
 import { AddNode } from "./AddNote";
 import { CurrentNote } from "./CurrentNote";
 import { ToastContainer, toast } from 'react-toastify';
+import { Commet, OrbitProgress } from "react-loading-indicators";
 
 export function HomePage(){
 
@@ -14,6 +15,7 @@ export function HomePage(){
     const JWT=localStorage.getItem("jwt");
     const [ showAddNote,setShowAddNote]=useState(false);
     const [notesData,setNotesdata]=useState([]);
+    const [loader,setLoader]=useState(true);
     const [showNote,setShowNote]=useState(false);
     const [currentNote,setCurrentNote]=useState({});
     const[isEditing,setIsEditing]=useState(false);
@@ -51,6 +53,7 @@ export function HomePage(){
         if(sort==true){arrayData.sort((a,b)=>a.data.date-b.data.date)}
         else{arrayData.sort((a,b)=>b.data.date-a.data.date)}
         setNotesdata([...arrayData]);
+        setLoader(false);
     }
 
 
@@ -59,7 +62,12 @@ export function HomePage(){
         <FloatingUI data={{setSearchFilter,setShowFavs,showFavs,setSort,sort}} ></FloatingUI>
 
         <div className="p-10 flex flex-wrap gap-5">
-           { showFavs ? notesData.filter(e=>e.data.fav==true).filter((e)=>e.data.title.includes(searchFilter)||e.data.content.includes(searchFilter)).map((e,index)=><NoteBox key={index} data={{e ,setShowNote,setCurrentNote}}></NoteBox>) :
+            {
+                loader && <div className=" w-[100%] h-[70vh] flex justify-center items-center">
+                    <OrbitProgress variant="dotted" color="#32cd32" size="medium" text="" textColor="" />
+                    </div>
+            }
+           {notesData && showFavs ? notesData.filter(e=>e.data.fav==true).filter((e)=>e.data.title.includes(searchFilter)||e.data.content.includes(searchFilter)).map((e,index)=><NoteBox key={index} data={{e ,setShowNote,setCurrentNote}}></NoteBox>) :
             notesData.filter((e)=>e.data.title.includes(searchFilter)||e.data.content.includes(searchFilter)).map((e,index)=><NoteBox key={index} data={{e ,setShowNote,setCurrentNote}}></NoteBox>)}
         </div>
 
